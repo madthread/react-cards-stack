@@ -1,0 +1,40 @@
+{
+  "name": "react-cards-stack",
+  "version": "1.0.0",
+  "description": "A react component for creating cards stack.",
+  "keywords": "react cards, cards, quiz cards, react codrops cards stack, react stack",
+  "main": "build/index.js",
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "dependencies": {
+    "classie": "^1.0.0",
+    "css-loader": "^3.0.0",
+    "dynamics.js": "^1.1.5",
+    "react": "^16.8.6",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.35.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "author": {
+    "name": "Harry Tran",
+    "email": "harry@madthread.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamharrytran/react-cards-stack.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "webpack-cli": "^3.3.5"
+  }
+}
