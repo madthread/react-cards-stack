@@ -56,25 +56,13 @@ class Fancy extends React.Component {
   }
 
   render() {
+    const {children, className, nextButton} = this.props
     return (
-      <div className="stack-container">
+      <div className={className || "stack-container"}>
         <ul id="stack" className={`stack stack--${this.state.effect}`}>
-        {this.state.imgs && this.state.imgs.map((img, i) =>
-          <li key={i} className="stack__item">
-          <img src={img} />
-        </li>)}
-      </ul>
-        <div className="controls">
-          <div>
-            <p className={this.state.queryclass}>{this.state.query}</p>
-            <button className={this.state.negativebtnclass} onClick={this.reject}>
-              {this.state.negativebtnlabel}
-            </button>
-            <button className={this.state.postivebtnclass} onClick={this.accept}>
-              {this.state.postivebtnlabel}
-            </button>
-          </div>
-        </div>
+          {children}
+        </ul>
+        {nextButton}
     </div>);
   }
 }
