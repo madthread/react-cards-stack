@@ -1,70 +1,74 @@
-import React from 'react';
-import '../lib/modernizr.js'
-import '../lib/stack.js'
-import '../lib/stack.css'
+import React from "react";
 
 class Fancy extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      stack: undefined,
-      imgs: undefined,
-      postivebtnlabel: undefined,
-      negativebtnlabel: undefined,
-      postivebtnclass : undefined,
-      negativebtnclass : undefined
+    constructor() {
+        super();
+        this.state = {
+            stack: undefined,
+            imgs: undefined,
+            postivebtnlabel: undefined,
+            negativebtnlabel: undefined,
+            postivebtnclass: undefined,
+            negativebtnclass: undefined
+        };
+        this.reject = this.reject.bind(this);
+        this.accept = this.accept.bind(this);
+        this.onEndStack = this.onEndStack.bind(this);
     }
-    this.reject = this.reject.bind(this)
-    this.accept = this.accept.bind(this)
-    this.onEndStack = this.onEndStack.bind(this)
-  }
 
-  componentDidMount() {
-    let stack = new Stack(document.getElementById('stack'));
-    stack.options.infinite = this.state.infinite
-    stack.options.onEndStack = this.onEndStack
-    this.setState({stack: stack})
-  }
+    componentDidMount() {
+        if (typeof window !== `undefined`) {
+            require("../lib/modernizr.js");
+            require("../lib/stack.js");
+            require("../lib/stack.css");
 
-  componentWillMount() {
-    this.setState({
-      imgs: this.props.images,
-      postivebtnlabel: this.props.postivebtnlabel || 'Yes',
-      negativebtnlabel: this.props.negativebtnlabel || 'No',
-      postivebtnclass : this.props.postivebtnclass || '',
-      negativebtnclass : this.props.negativebtnclass || '',
-      query : this.props.query || undefined,
-      queryclass : this.props.queryclass || '',
-      imgclass : this.props.imgclass || '',
-      effect : this.props.effect || 'krisna',
-      infinite : this.props.infinite || false
-    })
-  }
+            let stack = new Stack(document.getElementById("stack"));
+            stack.options.infinite = this.state.infinite;
+            stack.options.onEndStack = this.onEndStack;
+            this.setState({ stack: stack });
+        }
+    }
 
-  onEndStack() {
-    this.props.onstackendfn()
-  }
+    componentWillMount() {
+        this.setState({
+            imgs: this.props.images,
+            postivebtnlabel: this.props.postivebtnlabel || "Yes",
+            negativebtnlabel: this.props.negativebtnlabel || "No",
+            postivebtnclass: this.props.postivebtnclass || "",
+            negativebtnclass: this.props.negativebtnclass || "",
+            query: this.props.query || undefined,
+            queryclass: this.props.queryclass || "",
+            imgclass: this.props.imgclass || "",
+            effect: this.props.effect || "krisna",
+            infinite: this.props.infinite || false
+        });
+    }
 
-  reject() {
-    let stack = this.state.stack
-    stack.reject()
-  }
+    onEndStack() {
+        this.props.onstackendfn();
+    }
 
-  accept() {
-    let stack = this.state.stack
-    stack.accept()
-  }
+    reject() {
+        let stack = this.state.stack;
+        stack.reject();
+    }
 
-  render() {
-    const {children, className, nextButton} = this.props
-    return (
-      <div className={className || "stack-container"}>
-        <ul id="stack" className={`stack stack--${this.state.effect}`}>
-          {children}
-        </ul>
-        {nextButton}
-    </div>);
-  }
+    accept() {
+        let stack = this.state.stack;
+        stack.accept();
+    }
+
+    render() {
+        const { children, className, nextButton } = this.props;
+        return (
+            <div className={className || "stack-container"}>
+                <ul id="stack" className={`stack stack--${this.state.effect}`}>
+                    {children}
+                </ul>
+                {nextButton}
+            </div>
+        );
+    }
 }
 
 export default Fancy;
